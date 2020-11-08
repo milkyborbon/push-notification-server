@@ -47,6 +47,7 @@ function sendNotifications(subscriptions) {
 }
 
 const app = express();
+// TODO(kaycebasques): Remove the session stuff
 app.use(session({
   resave: false,
   saveUninitialized: true,
