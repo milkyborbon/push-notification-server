@@ -16,17 +16,13 @@ db.defaults({
   subscriptions: []
 }).write();
 
-function createNotification() {
-  return {
-    title: 'Hello, Notifications!',
-    options: { 
+function sendNotifications(subscriptions) {
+  const notification = JSON.stringify({
+    title: "Hello, Notifications!",
+    options: {
       body: `ID: ${Math.floor(Math.random() * 100)}`
     }
-  };
-}
-
-function sendNotifications(subscriptions) {
-  const notification = JSON.stringify(createNotification());
+  });
   const options = {
     TTL: 10000,
     vapidDetails: vapidDetails
@@ -63,10 +59,8 @@ app.post('/add-subscription', (request, response) => {
 });
 
 app.post('/remove-subscription', (request, response) => {
-  console.log(`Unsubscribing ${request.body.endpoint}`);
-  db.get('subscriptions')
-    .remove({endpoint: request.body.endpoint})
-    .write();
+  console.log('/remove-subscription');
+  console.log(request.body);
   response.sendStatus(200);
 });
 
