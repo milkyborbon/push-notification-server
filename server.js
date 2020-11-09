@@ -17,29 +17,7 @@ db.defaults({
 }).write();
 
 function sendNotifications(subscriptions) {
-  const notification = JSON.stringify({
-    title: "Hello, Notifications!",
-    options: {
-      body: `ID: ${Math.floor(Math.random() * 100)}`
-    }
-  });
-  const options = {
-    TTL: 10000,
-    vapidDetails: vapidDetails
-  };
-  subscriptions.forEach(subscription => {
-    const endpoint = subscription.endpoint;
-    const id = endpoint.substr((endpoint.length - 8), endpoint.length);
-    webpush.sendNotification(subscription, notification, options)
-      .then(result => {
-        console.log(`Endpoint ID: ${id}`);
-        console.log(`Result: ${result.statusCode}`);
-      })
-      .catch(error => {
-        console.log(`Endpoint ID: ${id}`);
-        console.log(`Error: ${error} `);
-      });
-  });
+  // TODO
 }
 
 const app = express();
@@ -65,21 +43,14 @@ app.post('/remove-subscription', (request, response) => {
 });
 
 app.post('/notify-me', (request, response) => {
-  console.log(`Notifying ${request.body.endpoint}`);
-  const subscription = db.get('subscriptions').find({endpoint: request.body.endpoint}).value();
-  sendNotifications([subscription]);
+  console.log('/notify-me');
+  console.log(request.body);
   response.sendStatus(200);
 });
 
 app.post('/notify-all', (request, response) => {
-  console.log('Notifying all subscribers');
-  const subscriptions = db.get('subscriptions').cloneDeep().value();
-  if (subscriptions.length > 0) {
-    sendNotifications(subscriptions);
-    response.sendStatus(200);
-  } else {
-    response.sendStatus(409);
-  }
+  console.log('/notify-all');
+  response.sendStatus(200);
 });
 
 app.get('/', (request, response) => {
