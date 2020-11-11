@@ -1,3 +1,4 @@
 ## Build a push notifications server
 
-Starting code for [Codelab: Build a push notifications server](http://web.dev/codelab-notifications-push-server/).
+The starting code for 
+[Codelab: Build a push notifications server](http://web.dev/push-notifications-server-codelab/).

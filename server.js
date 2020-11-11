@@ -1,7 +1,6 @@
 const express = require('express');
 const webpush = require('web-push');
 const bodyparser = require('body-parser');
-const session = require('express-session');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('.data/db.json');
@@ -21,12 +20,6 @@ function sendNotifications(subscriptions) {
 }
 
 const app = express();
-// TODO(kaycebasques): Remove the session stuff
-app.use(session({
-  resave: false,
-  saveUninitialized: true,
-  secret: 'kg94gja2359gjdk46jgf'
-}));
 app.use(bodyparser.json());
 app.use(express.static('public'));
 
