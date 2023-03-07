@@ -24,8 +24,10 @@ app.use(bodyparser.json());
 app.use(express.static('public'));
 
 app.post('/add-subscription', (request, response) => {
-  console.log('/add-subscription');
-  console.log(request.body);
+  console.log(`Subscribing ${request.body.endpoint}`);
+  db.get('subscriptions')
+    .push(request.body)
+    .write();
   response.sendStatus(200);
 });
 
