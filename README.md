@@ -5,4 +5,6 @@ The starting code for
 
 Uses Express.js, web-push.js, and lowdb.js
 
-run node server.js
+run 'npm install' to install dependencies.
+
+run 'node server.js'
