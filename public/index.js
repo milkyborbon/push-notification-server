@@ -1,4 +1,4 @@
-const VAPID_PUBLIC_KEY = 'BNc8fQtyhd8NxIRNmSngcy0KcUPF_yoJpmgNt8SUfKUIvTf9kD8ebg2CXbH5RvVQCIBScc1T1JAFoCoGg3tCdgE';
+const VAPID_PUBLIC_KEY = 'BBKwe18GFdSX5aLMSUhx806XfPWzGRUf4cEaqTyHebKr1WClVeXYvmvXb2HBGwdYiM7FHxmtON-PfF7c1v5zc0c';
 
 /* Push notification logic. */
 

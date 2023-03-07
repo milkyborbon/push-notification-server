@@ -2,13 +2,14 @@ const express = require('express');
 const webpush = require('web-push');
 const bodyparser = require('body-parser');
 const low = require('lowdb');
+
 const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync('.data/db.json');
+const adapter = new FileSync('db.json');
 const db = low(adapter);
 const vapidDetails = {
-  publicKey: process.env.VAPID_PUBLIC_KEY,
-  privateKey: process.env.VAPID_PRIVATE_KEY,
-  subject: process.env.VAPID_SUBJECT
+  publicKey: "BBKwe18GFdSX5aLMSUhx806XfPWzGRUf4cEaqTyHebKr1WClVeXYvmvXb2HBGwdYiM7FHxmtON-PfF7c1v5zc0c",
+  privateKey: "u728cVQBvMFfbZFFxseyUI6PO9CiGgf0ap7YX6O3v1I",
+  subject: "mailto:test@test.test"
 };
 
 db.defaults({
